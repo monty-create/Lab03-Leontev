@@ -5,7 +5,6 @@ class Program
 {
     static void Main()
     {
-        // === Базовая часть ===
         int number = 305419896;
         Console.WriteLine($"Число: {number}");
         Console.WriteLine($"В hex: 0x{number:X8}");
@@ -22,7 +21,6 @@ class Program
         Console.WriteLine("Байты текста UTF-8:");
         Console.WriteLine(BitConverter.ToString(textBytes));
 
-        // === Исследование 1: Что находится внутри int ===
         Console.WriteLine("\n=== Исследование 1 ===");
         int[] testNumbers = { 1, 256, 65536 };
         foreach (int n in testNumbers)
@@ -31,7 +29,6 @@ class Program
             Console.WriteLine($"{n} -> {BitConverter.ToString(b)}");
         }
 
-        // === Исследование 3: Число и текст ===
         Console.WriteLine("\n=== Исследование 3 ===");
         string text2 = "ABC";
         byte[] text2Bytes = Encoding.UTF8.GetBytes(text2);
@@ -48,7 +45,6 @@ class Program
         Console.WriteLine($"Количество байтов UTF-8: {text2Bytes.Length}");
         Console.WriteLine($"Байты: {BitConverter.ToString(text2Bytes)}");
 
-        // === Исследование 4: Английская и русская буква ===
         Console.WriteLine("\n=== Исследование 4 ===");
         string english = "A";
         string russian = "А";
@@ -57,7 +53,6 @@ class Program
         Console.WriteLine($"Английская A: {BitConverter.ToString(englishBytes)}");
         Console.WriteLine($"Русская А: {BitConverter.ToString(russianBytes)}");
 
-        // === Исследование 5: Обратное преобразование текста ===
         Console.WriteLine("\n=== Исследование 5 ===");
         string text3 = "Привет";
         byte[] bytes = Encoding.UTF8.GetBytes(text3);
@@ -65,7 +60,6 @@ class Program
         Console.WriteLine($"Исходная строка: {text3}");
         Console.WriteLine($"Восстановленная: {restored}");
 
-        // === Исследование 6: Обратное преобразование числа ===
         Console.WriteLine("\n=== Исследование 6 ===");
         int number2 = 123456789;
         byte[] bytes2 = BitConverter.GetBytes(number2);
@@ -74,10 +68,10 @@ class Program
         Console.WriteLine($"Восстановленное число: {restored2}");
         Console.WriteLine($"Байты: {BitConverter.ToString(bytes2)}");
 
-        // === Эксперимент: Одни байты — разные смыслы ===
         Console.WriteLine("\n=== Эксперимент ===");
         byte[] data = { 0x41, 0x42, 0x43 };
         Console.WriteLine($"Байты: {BitConverter.ToString(data)}");
         Console.WriteLine($"Как текст UTF-8: {Encoding.UTF8.GetString(data)}");
     }
 }
+
